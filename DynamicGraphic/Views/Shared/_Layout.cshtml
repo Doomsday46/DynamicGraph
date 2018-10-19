@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="~/Content/Site.css">
+    <title>Мастер страница</title>
+</head>
+
+<body>
+    <div>
+        @Scripts.Render("~/bundles/jquery");
+        <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>﻿
+        @Html.ActionLink("На главную", "Index", "Home")
+        @Html.ActionLink("Генерация записей в бд", "generateRecordsAsync", "Home")
+        @RenderSection("scripts", required: false)
+        @RenderBody()
+
+    </div>
+
+
+</body>
+
+</html>
