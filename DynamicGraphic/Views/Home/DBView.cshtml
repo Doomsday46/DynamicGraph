@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "/views/Shared/_Layout.cshtml";
 }
-<h2>DBView</h2>
+<h2>График функции</h2>
 <script src="@Url.Content("~/Scripts/Moment.js")"></script>
 <script src="@Url.Content("~/Scripts/Chart.js")"></script>﻿
 <canvas id="myChart" width="400" height="400"></canvas>
@@ -11,9 +11,8 @@
     OnComplete = "OnComplete"
 }))
 {
-    <input type="submit" value="Получить" />
+    <input type="submit" value="Отобразить" />
     <div id="result">
-
 
     </div>
 }
