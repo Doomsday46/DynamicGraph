@@ -168,7 +168,6 @@
     </Compile>
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\implements\MeasurementMapper.cs" />
-    <Compile Include="Models\Factory\MeasurementFactory.cs" />
     <Compile Include="Models\Generators\IAddMeasurementRecords.cs" />
     <Compile Include="Models\Generators\Implements\RandomByTheList.cs" />
     <Compile Include="Models\Generators\Implements\RandomAddMeasurementRecords.cs" />
@@ -178,6 +177,11 @@
     <Compile Include="Models\SqlRepository\IRepository.cs" />
     <Compile Include="Models\SqlRepository\SqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\Enum\AlgorithmEnum.cs" />
+    <Compile Include="Strategies\ExecuterStrategies.cs" />
+    <Compile Include="Strategies\GenerateRecords.cs" />
+    <Compile Include="Strategies\IStrategy.cs" />
+    <Compile Include="Strategies\RandomGenerateRecords.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

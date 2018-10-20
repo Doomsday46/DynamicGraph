@@ -92,11 +92,24 @@
                 }
             }
             console.log(datasets);
+            function rgb_random() {
+                var r = Math.floor(Math.random() * (256));
+                var g = Math.floor(Math.random() * (256));
+                var b = Math.floor(Math.random() * (256));
+                if (r > 220 && g > 220 && b > 220) {
+                    r -= 50;
+                    g -= 75;
+                    b -= 36;
+                }
+                var str_rgb = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+
+                return str_rgb;
+            }
             for (var i = 0; i < datasets.length; i++) {
                 config_data.push({
                     label: datasets[i].label,
                     backgroundColor: "rgba(0,0,0,0)",
-                    borderColor: "rgb(255, 0, 0)",
+                    borderColor: rgb_random(),
                     fill: false,
                     data: datasets[i].data
                 });
