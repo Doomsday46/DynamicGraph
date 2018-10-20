@@ -14,10 +14,6 @@ namespace DynamicGraphic.Models.Generators.Implements
             this.list_elements = list_elements;
             this.random = random;
         }
-        public string getString(int size)
-        {
-            return "DefaultName";
-        }
 
         public string getString()
         {

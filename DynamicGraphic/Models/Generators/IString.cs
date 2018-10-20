@@ -8,8 +8,6 @@ namespace DynamicGraphic.Models.Generators
 {
     public interface IString
     {
-        String getString(int size);
-
         String getString();
     }
 }

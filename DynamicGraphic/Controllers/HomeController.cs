@@ -3,9 +3,12 @@ using DynamicGraphic.Mappers;
 using DynamicGraphic.Models;
 using DynamicGraphic.Models.Generators;
 using DynamicGraphic.Models.Generators.Implements;
+using DynamicGraphic.Strategies;
+using DynamicGraphic.Strategies.Enum;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -14,59 +17,44 @@ namespace DynamicGraphic.Controllers
 {
     public class HomeController : Controller
     {
-        [Inject]
-        public IRepository Repository { get; set; }
 
-        public IAddMeasurementRecords addMeasurementRecords;
+        public IRepository Repository { get; set; }
 
         [Inject]
         public IMapper ModelMapper { get; set; }
+
+        private ExecuterStrategies executerStratigies;
+        [Inject]
+        public HomeController(IRepository Repository) {
+            this.Repository = Repository;
+            executerStratigies = new ExecuterStrategies(new List<IStrategy>() { new GenerateRecords(Repository), new RandomGenerateRecords(Repository) });
+        }
+
         public ActionResult Index()
         {
-
+            
             return View();
         }
 
-        public void RandomGenerateRecords()
-        {
-            Random random = new Random();
-            ICollection<Measurement> measurements = GetMeasurements(random.Next(1, 15));
-            addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomString(random));
-            Repository.addAllMeasurements(addMeasurementRecords.getRecords());
-        }
-        public void generateRecords()
-        {
-            Random random = new Random();
-            List<string> list_names_parameters = new List<string>();
-            for (var i = 1; i < 12; i++)
-                list_names_parameters.Add("Param" + i);
-            ICollection<Measurement> measurements = GetMeasurements(random.Next(1, 15));
-            addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomByTheList(random, list_names_parameters));
-            Repository.addAllMeasurements(addMeasurementRecords.getRecords());
-            Thread.Sleep(25000);
-            generateRecordsAsync();
-        }
-        public async Task<ActionResult>  generateRecordsAsync() {
-            await Task.Run(() => generateRecords());
+        public  ActionResult GenerateRecordsAsync() {
+            int startTimeSpan = 5000,
+                periodTimeSpan = 20000;
+            var timer = new Timer(async (e) =>
+            {
+                await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
+            }, null, startTimeSpan, periodTimeSpan);
+
             return View("Index");
         }
 
-        private ICollection<Measurement> GetMeasurements(int size) {
-            ICollection<Measurement> measurements = new List<Measurement>();
-            for (int i = 0; i < size; i++) {
-                measurements.Add(new MeasurementFactory().GetMeasurement());
-            }
-            return measurements;
-        }
-
-        public ActionResult getData()
+        public ActionResult GetData()
         {
             IEnumerable<Measurement> measurements = Repository.GetMeasurements();
             ViewBag.Data = measurements;
             return View("DBView");
         }
 
-        public JsonResult getDataJSON()
+        public JsonResult GetDataJSON()
         {
             
             var records = Repository.GetMeasurements();

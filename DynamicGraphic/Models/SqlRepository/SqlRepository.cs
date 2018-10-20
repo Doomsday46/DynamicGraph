@@ -41,7 +41,7 @@ namespace DynamicGraphic.Models
             if (measurements.Count() !=  0) {
                 return measurements;
             }
-            throw null;
+            return null;
         }
     }
 }
