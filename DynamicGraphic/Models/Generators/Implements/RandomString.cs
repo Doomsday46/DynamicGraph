@@ -26,7 +26,7 @@ namespace DynamicGraphic.Models.Generators.Implements
                 builder.Append(ch);
             }
 
-            return builder.ToString();
+            return builder.ToString().TrimEnd();
         }
     }
 }

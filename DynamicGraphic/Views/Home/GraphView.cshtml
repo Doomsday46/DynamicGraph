@@ -48,6 +48,8 @@
                         date_time: moment(arr[i].date_time, "YYYY.MM.DD HH:mm")
                     });
                 }
+                console.log("Изначальные данные - ");
+                console.log(arr_convert);
             }
             arr_convert.sort(function compare(a, b) {
                 if (a.date_time < b.date_time) {
