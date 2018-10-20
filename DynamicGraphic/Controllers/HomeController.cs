@@ -6,6 +6,7 @@ using DynamicGraphic.Models.Generators.Implements;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -27,14 +28,16 @@ namespace DynamicGraphic.Controllers
             return View();
         }
 
-        public void RandomGenerateRecords()
+        private void RandomGenerateRecords()
         {
             Random random = new Random();
-            ICollection<Measurement> measurements = GetMeasurements(random.Next(1, 15));
-            addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomString(random));
+            int size_measurements = random.Next(1, 15),
+                size_string = random.Next(4, 6);
+            ICollection<Measurement> measurements = GetMeasurements(size_measurements);
+            addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomString(random, size_string));
             Repository.addAllMeasurements(addMeasurementRecords.getRecords());
         }
-        public void generateRecords()
+        private void generateRecords()
         {
             Random random = new Random();
             List<string> list_names_parameters = new List<string>();

@@ -26,10 +26,10 @@ namespace DynamicGraphic.Mappers.implements
     }
     public class DateTimeTypeConverter : ITypeConverter<DateTime, String>
     {
-        private const String PATTER_DATETIME = "yyyy.MM.dd HH:mm";
+        private const String PATTERN_DATETIME = "yyyy.MM.dd HH:mm";
         public String Convert(DateTime measurement, String measurementView, ResolutionContext context)
         {
-            return measurement.ToString(PATTER_DATETIME);
+            return measurement.ToString(PATTERN_DATETIME);
         }
     }
 

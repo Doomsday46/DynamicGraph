@@ -22,7 +22,6 @@ namespace DynamicGraphic.Models.Generators.Implements
         {
             Random random = new Random();
             foreach(var record in MeasurementRecords){
-                int size = random.Next(4, 8);
                 record.parameter_name = generatorString.getString().TrimEnd();
                 record.parameter_value = random.Next(0, 250);
                 int month = random.Next(1, 12),

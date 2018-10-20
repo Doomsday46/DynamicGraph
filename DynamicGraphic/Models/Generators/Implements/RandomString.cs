@@ -10,27 +10,17 @@ namespace DynamicGraphic.Models.Generators.Implements
     {
         private Random random;
         private const int BASE_SIZE_STRING = 6;
-        public RandomString(Random random) {
-            this.random = random;
+        private int size_string;
+        public RandomString(Random random,int size) {
+            this.random = random ?? throw new ArgumentNullException();
+            if (size > 0) this.size_string = size;
+            else this.size_string = BASE_SIZE_STRING;
         }
-        public string getString(int size)
-        {
-            StringBuilder builder = new StringBuilder();
-            char ch;
-            for (int i = 0; i < size; i++)
-            {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-
-            return builder.ToString();
-        }
-
         public string getString()
         {
             StringBuilder builder = new StringBuilder();
             char ch;
-            for (int i = 0; i < BASE_SIZE_STRING; i++)
+            for (int i = 0; i < size_string; i++)
             {
                 ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
                 builder.Append(ch);
