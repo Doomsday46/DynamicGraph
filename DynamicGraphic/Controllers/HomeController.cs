@@ -37,7 +37,7 @@ namespace DynamicGraphic.Controllers
             addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomString(random, size_string));
             Repository.addAllMeasurements(addMeasurementRecords.getRecords());
         }
-        private void generateRecords()
+        private void GenerateRecords()
         {
             Random random = new Random();
             List<string> list_names_parameters = new List<string>();
@@ -46,11 +46,15 @@ namespace DynamicGraphic.Controllers
             ICollection<Measurement> measurements = GetMeasurements(random.Next(1, 15));
             addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomByTheList(random, list_names_parameters));
             Repository.addAllMeasurements(addMeasurementRecords.getRecords());
-            Thread.Sleep(25000);
-            generateRecordsAsync();
         }
-        public async Task<ActionResult>  generateRecordsAsync() {
-            await Task.Run(() => generateRecords());
+        public  ActionResult GenerateRecordsAsync() {
+            int startTimeSpan = 5000,
+                periodTimeSpan = 20000;
+            var timer = new Timer(async (e) =>
+            {
+                await Task.Run(() => GenerateRecords());
+            }, null, startTimeSpan, periodTimeSpan);
+
             return View("Index");
         }
 
@@ -62,14 +66,14 @@ namespace DynamicGraphic.Controllers
             return measurements;
         }
 
-        public ActionResult getData()
+        public ActionResult GetData()
         {
             IEnumerable<Measurement> measurements = Repository.GetMeasurements();
             ViewBag.Data = measurements;
             return View("DBView");
         }
 
-        public JsonResult getDataJSON()
+        public JsonResult GetDataJSON()
         {
             
             var records = Repository.GetMeasurements();
