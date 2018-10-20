@@ -51,7 +51,7 @@ namespace DynamicGraphic.Controllers
         {
             IEnumerable<Measurement> measurements = Repository.GetMeasurements();
             ViewBag.Data = measurements;
-            return View("DBView");
+            return View("GraphView");
         }
 
         public JsonResult GetDataJSON()

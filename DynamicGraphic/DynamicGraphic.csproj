@@ -231,7 +231,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\DBView.cshtml" />
+    <Content Include="Views\Home\GraphView.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
