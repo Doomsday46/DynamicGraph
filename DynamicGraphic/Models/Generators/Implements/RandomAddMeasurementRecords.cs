@@ -22,7 +22,7 @@ namespace DynamicGraphic.Models.Generators.Implements
         {
             Random random = new Random();
             foreach(var record in MeasurementRecords){
-                record.parameter_name = generatorString.getString();
+                record.parameter_name = generatorString.getString().Trim();
                 record.parameter_value = random.Next(0, 250);
                 int month = random.Next(1, 12),
                     day = random.Next(1, 28),

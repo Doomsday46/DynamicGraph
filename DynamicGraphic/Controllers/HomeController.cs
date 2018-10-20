@@ -41,7 +41,6 @@ namespace DynamicGraphic.Controllers
                 periodTimeSpan = 10000;
             var timer = new Timer(async (e) =>
             {
-                Console.WriteLine("--------Срабатывает таймер ------------------------------------------------------------------------");
                 await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
             }, null, startTimeSpan, periodTimeSpan);
 
