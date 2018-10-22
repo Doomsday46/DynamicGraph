@@ -10,7 +10,7 @@ namespace DynamicGraphic.Models
     public class SqlRepository : IRepository
     {
         [Inject]
-        public TestDBDataContext Db { get; set; }
+        public MeasurementDBDataContext Db { get; set; }
 
         public bool addAllMeasurements(IEnumerable<Measurement> measurements)
         {

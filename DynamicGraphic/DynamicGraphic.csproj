@@ -161,13 +161,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\TestDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestDB.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Mapper\implements\MeasurementMapper.cs" />
+    <Compile Include="App_Data\MeasurementDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Generators\IAddMeasurementRecords.cs" />
     <Compile Include="Models\Generators\Implements\RandomByTheList.cs" />
     <Compile Include="Models\Generators\Implements\RandomAddMeasurementRecords.cs" />
@@ -184,6 +184,10 @@
     <Compile Include="Strategies\RandomGenerateRecords.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Measurement.mdf" />
+    <Content Include="App_Data\Measurement_log.ldf">
+      <DependentUpon>Measurement.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -196,13 +200,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\TestDB.dbml">
+    <Content Include="App_Data\MeasurementDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>TestDB.designer.cs</LastGenOutput>
+      <LastGenOutput>MeasurementDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="App_Data\TestDB.dbml.layout">
-      <DependentUpon>TestDB.dbml</DependentUpon>
+    <None Include="App_Data\MeasurementDB.dbml.layout">
+      <DependentUpon>MeasurementDB.dbml</DependentUpon>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />

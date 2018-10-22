@@ -5,17 +5,16 @@ using DynamicGraphic.Models;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Modules;
-
+using System.Configuration;
 
 namespace DynamicGraphic.App_Start
 {
     public class NinjectRegistrations : NinjectModule
     {
-        private const string CONNECTION_STRING = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TestDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
         public override void Load()
         {
             Bind<IRepository>().To<SqlRepository>();
-            Bind<TestDBDataContext>().ToMethod(c => new TestDBDataContext(CONNECTION_STRING));
+            Bind<MeasurementDBDataContext>().ToMethod(c => new MeasurementDBDataContext(ConfigurationManager.ConnectionStrings["MeasurementConnectionString"].ConnectionString));
             Bind<IMapper>().To<MeasurementMapper>().InSingletonScope();
         }
     }
