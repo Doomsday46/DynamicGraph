@@ -134,7 +134,7 @@ function on_create_g() {
                 console.log("Был запрос");
             }
         });
-    }, 3000);
+    }, 1000);
 }
 
 function OnComplete() {
@@ -202,8 +202,6 @@ function RenderGraph(data) {
             }
             if (flag) flag = false;
         }
-        console.log(config.data.datasets);
-        console.log(arr_convert);
         lineChart.update();
     }
 }

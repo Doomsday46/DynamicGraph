@@ -37,11 +37,11 @@ namespace DynamicGraphic.Controllers
         }
 
         public  ActionResult GenerateRecordsAsync() {
-            int startTimeSpan = 5000,
-                periodTimeSpan = 10000;
+            int startTimeSpan = 1000,
+                periodTimeSpan = 1000;
             var timer = new Timer(async (e) =>
             {
-               // await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
+                await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
             }, null, startTimeSpan, periodTimeSpan);
 
             return View("Index");
@@ -56,7 +56,7 @@ namespace DynamicGraphic.Controllers
 
         public JsonResult GetDataJSON()
         {
-            executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords);
+            //executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords);
             var records = Repository.GetMeasurements();
             var jsonData = new List<object>();
             foreach (var record in records) {
