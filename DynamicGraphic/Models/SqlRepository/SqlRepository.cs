@@ -39,6 +39,9 @@ namespace DynamicGraphic.Models
         {
             var measurements = Db.Measurement;
             if (measurements.Count() !=  0) {
+                foreach (var measurement_elem in Db.Measurement) {
+                    measurement_elem.parameter_name.Trim();
+                }
                 return measurements;
             }
             return null;

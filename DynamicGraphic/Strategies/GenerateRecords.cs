@@ -17,10 +17,9 @@ namespace DynamicGraphic.Strategies
         public override void ExecuteAlgorithm()
         {
             Random random = new Random();
-            List<string> list_names_parameters = new List<string>();
-            for (var i = 1; i < 12; i++)
-                list_names_parameters.Add("Param" + i);
-            ICollection<Measurement> measurements = GetMeasurements(random.Next(1, 15));
+            List<string> list_names_parameters = new List<string>();     
+            list_names_parameters.Add("Param" + 1);
+            ICollection<Measurement> measurements = GetMeasurements(1);
             addMeasurementRecords = new RandomAddMeasurementRecords(measurements, new RandomByTheList(random, list_names_parameters));
             Repository.addAllMeasurements(addMeasurementRecords.getRecords());
         }

@@ -19,7 +19,7 @@ namespace DynamicGraphic.Models.Generators.Implements
         {
             var sizeList = list_elements.Count();
             var position = random.Next(0, sizeList);
-            return list_elements[position];
+            return list_elements[0];
         }
     }
 }

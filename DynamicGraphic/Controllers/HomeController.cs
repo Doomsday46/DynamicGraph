@@ -41,7 +41,7 @@ namespace DynamicGraphic.Controllers
                 periodTimeSpan = 10000;
             var timer = new Timer(async (e) =>
             {
-                await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
+               // await Task.Run(() => executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords));
             }, null, startTimeSpan, periodTimeSpan);
 
             return View("Index");
@@ -56,7 +56,7 @@ namespace DynamicGraphic.Controllers
 
         public JsonResult GetDataJSON()
         {
-            
+            executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords);
             var records = Repository.GetMeasurements();
             var jsonData = new List<object>();
             foreach (var record in records) {
