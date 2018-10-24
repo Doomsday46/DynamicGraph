@@ -28,6 +28,7 @@ namespace DynamicGraphic.Models.Generators.Implements
                     day = random.Next(1, 28),
                     hours = random.Next(0, 24);
                 record.date_time = generateDateTime(month, day, hours);
+                record.date_time = DateTime.Now;
             }
             return MeasurementRecords;
         }
