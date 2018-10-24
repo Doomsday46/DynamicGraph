@@ -56,7 +56,7 @@ namespace DynamicGraphic.Controllers
 
         public JsonResult GetDataJSON()
         {
-            //executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords);
+            executerStratigies.ExecuteStrategy(AlgorithmEnum.GenerateRecords);
             var records = Repository.GetMeasurements();
             var jsonData = new List<object>();
             foreach (var record in records) {
