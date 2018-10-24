@@ -10,7 +10,6 @@ namespace DynamicGraphic.Models.Generators.Implements
     {
         private IEnumerable<Measurement> MeasurementRecords;
         private IString generatorString;
-        private const int YEAR = 2018; 
 
         public RandomAddMeasurementRecords(IEnumerable<Measurement> measurementRecords,IString generatorString) {
             if (measurementRecords == null || generatorString == null) throw new ArgumentNullException("Constructor RandomGeneratorAddMeasurementRecords");
@@ -27,15 +26,10 @@ namespace DynamicGraphic.Models.Generators.Implements
                 int month = random.Next(1, 12),
                     day = random.Next(1, 28),
                     hours = random.Next(0, 24);
-                record.date_time = generateDateTime(month, day, hours);
                 record.date_time = DateTime.Now;
             }
             return MeasurementRecords;
         }
-
-        private DateTime generateDateTime(int month,int day, int hours) {
-            return new DateTime(YEAR, month, day, hours, 0 , 0);
-        }
-        
+       
     }
 }

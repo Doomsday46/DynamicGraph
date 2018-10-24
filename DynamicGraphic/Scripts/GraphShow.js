@@ -201,7 +201,7 @@ function RenderGraph(data) {
                 config.data.datasets.push(datasets_element);
             }
             if (flag) flag = false;
-        }
-        lineChart.update();
+       }
+       lineChart.update();
     }
 }
